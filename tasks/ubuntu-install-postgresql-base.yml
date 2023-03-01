@@ -1,0 +1,7 @@
+---
+# tasks - ubuntu-install-postgresql-base.yml for nerve4-postgresql
+
+- name: Install required pkgs on Ubuntu
+  ansible.builtin.apt:
+    pkg: "{{ item }}"
+  loop: "{{ ubuntu_pkgs }}"
