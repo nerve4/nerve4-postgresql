@@ -1,0 +1,8 @@
+---
+# tasks - run-postgresql.yml for nerve4-docker
+
+- name: Enable and restart postgresql service
+  ansible.builtin.systemd:
+    name: "postgresql"
+    state: restarted
+    enabled: yes

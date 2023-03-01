@@ -1,0 +1,17 @@
+---
+# tasks - rhel-install-postgresql-base.yml for nerve4-postgresql
+
+- name: Enable postgresql module on Rhel 8.x / Rocky Linux
+  become: yes
+  ansible.builtin.shell: "{{ rhel_module_enable }}"
+
+- name: Install required pkgs on Rhel 8.x / Rocky Linux
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ rhel_pkgs }}"
+
+- name: Creating PostgreSQL Database Cluster on Rhel 8.x / Rocky Linux
+  become: yes
+  ansible.builtin.shell: |
+    postgresql-setup --initdb
